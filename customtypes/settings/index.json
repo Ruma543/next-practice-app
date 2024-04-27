@@ -42,10 +42,10 @@
                 "select": null
               }
             },
-            "lable": {
+            "label": {
               "type": "Text",
               "config": {
-                "label": "Lable",
+                "label": "Label",
                 "placeholder": ""
               }
             }

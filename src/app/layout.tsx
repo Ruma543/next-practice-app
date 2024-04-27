@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { createClient } from '@/prismicio';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 // export const metadata: Metadata = {
@@ -11,7 +13,7 @@ const inter = Inter({ subsets: ['latin'] });
 export async function generateMetadata(): Promise<Metadata> {
   // read route params
   const client = createClient();
-  const page = await client.getSingle('settings');
+  const settings = await client.getSingle('settings');
   // const id = params.id;
 
   // fetch data
@@ -21,10 +23,11 @@ export async function generateMetadata(): Promise<Metadata> {
   // const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: page.data.side_text || 'next app fallback',
-    description: page.data.meta_description || 'next app description fallback',
+    title: settings.data.side_text || 'next app fallback',
+    description:
+      settings.data.meta_description || 'next app description fallback',
     openGraph: {
-      images: [page.data.og_image.url || ''],
+      images: [settings.data.og_image.url || ''],
     },
   };
 }
@@ -37,9 +40,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header>header!</header>
+        <Header></Header>
         {children}
-        <footer>footer</footer>
+        <Footer></Footer>
       </body>
     </html>
   );
