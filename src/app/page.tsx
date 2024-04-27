@@ -3,7 +3,8 @@ import banner from '../../public/banner.jpg';
 export default function Home() {
   return (
     <div>
-      <Image
+      <h3 className="text-3xl">Hello World</h3>
+      {/* <Image
         src={banner}
         alt="banner"
         sizes="100vw"
@@ -15,7 +16,7 @@ export default function Home() {
           height: 'auto',
         }}
         priority
-      ></Image>
+      ></Image> */}
     </div>
   );
 }
